@@ -1,0 +1,14 @@
+{
+  "name": "GitHub Planning Helper",
+  "version": "1.0",
+  "manifest_version": 1,
+  "description": "Add all numeric tags when viewing GitHub issues.",
+  "content_scripts": [
+    {
+      "matches": [
+          "http://github.com/*/*/issues*"
+      ],
+      "js": ["add-numeric-tags.js"]
+    }
+  ]
+}
