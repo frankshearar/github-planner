@@ -1,11 +1,28 @@
-var labels = document.getElementsByClassName("filter-item");
+var labels = document.getElementsByClassName('filter-item');
 var total = 0.0;
-labels.forEach(function(element, index, array) {
-    var n = parseFloat(labels.body);
-    if (!n.isNan()) {
-      total += n;
+for (var i = 0; i < labels.length; i++) {
+    element = labels[i];
+    var scale = element.querySelector('.name');
+    if (scale) {
+      scale = scale.innerHTML;
+
+      var count = element.querySelector('.count');
+
+      if (count) {
+        count = count.innerHTML;
+
+        scale = parseFloat(scale);
+        count = parseInt(count);
+        if (!isNaN(scale) && !isNaN(count)) {
+          total += scale * count;
+        }
+      }
     }
-  });
+}
 
-
-// the bodies of spans with class "label" that are numbers
+var display = document.createElement('span')
+display.innerHTML = "| Total estimate: " + total.toString();
+display.className = 'open';
+console.log("1");
+document.querySelector('.info-secondary').appendChild(display);
+console.log("2");
