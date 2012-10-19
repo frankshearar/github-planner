@@ -20,9 +20,19 @@ for (var i = 0; i < labels.length; i++) {
     }
 }
 
-var display = document.createElement('span')
-display.innerHTML = "| Total estimate: " + total.toString();
+var hangPoint = document.querySelector('.info-secondary');
+var totalDescription = "Total estimate: " + total.toString();
+
+if (!hangPoint) {
+  var progBar = document.querySelector('.sidebar-milestone-widget');
+  var fakeInfo = document.createElement('div');
+  progBar.appendChild(fakeInfo);
+  hangPoint = fakeInfo;
+} else {
+  totalDescription = "| " + totalDescription;
+}
+
+var display = document.createElement('span');
+display.innerHTML = totalDescription;
 display.className = 'open';
-console.log("1");
-document.querySelector('.info-secondary').appendChild(display);
-console.log("2");
+hangPoint.appendChild(display);
