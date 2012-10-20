@@ -1,23 +1,20 @@
+// Find all the labels
 var labels = document.getElementsByClassName('filter-item');
 var total = 0.0;
 for (var i = 0; i < labels.length; i++) {
-    element = labels[i];
-    var scale = element.querySelector('.name');
-    if (scale) {
-      scale = scale.innerHTML;
-
-      var count = element.querySelector('.count');
-
-      if (count) {
-        count = count.innerHTML;
-
-        scale = parseFloat(scale);
-        count = parseInt(count);
-        if (!isNaN(scale) && !isNaN(count)) {
-          total += scale * count;
-        }
-      }
+  var element = labels[i];
+  var scale = element.querySelector('.name');
+  var count = element.querySelector('.count');
+  if (scale && count) {
+    scale = parseFloat(scale.innerHTML);
+    count = parseInt(count.innerHTML);
+    // Filter out any non-numeric labels.
+    // Also, protect against with non-numeric counts (which shouldn't
+    // happen, but...).
+    if (!isNaN(scale) && !isNaN(count)) {
+      total += scale * count;
     }
+  }
 }
 
 var hangPoint = document.querySelector('.info-secondary');

@@ -2,7 +2,7 @@
   "name": "GitHub Planning Helper",
   "version": "1.0",
   "manifest_version": 1,
-  "description": "Add all numeric tags when viewing GitHub issues.",
+  "description": "Display the total estimate for your GitHub milestones.",
   "content_scripts": [
     {
       "matches": [
