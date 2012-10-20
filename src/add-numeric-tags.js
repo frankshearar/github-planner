@@ -23,6 +23,7 @@ var totalDescription = "Total estimate: " + total.toString();
 if (!hangPoint) {
   var progBar = document.querySelector('.sidebar-milestone-widget');
   var fakeInfo = document.createElement('div');
+  fakeInfo.className = 'info-secondary';
   progBar.appendChild(fakeInfo);
   hangPoint = fakeInfo;
 } else {
