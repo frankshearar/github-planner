@@ -31,19 +31,19 @@ function createHangPoint(rootElement) {
 function createDisplay(description) {
   var display = document.createElement('span');
   display.innerHTML = totalDescription;
-  display.className = 'open';
+  display.className = 'footer-text';
   return display;
 }
 
-var hangPoint = document.querySelector('.info-secondary');
+var hangPoint = document.querySelector('.list-browser-footer');
 var totalDescription = "Total estimate: " + totalFilterItems().toString();
 
 if (!hangPoint) {
-  var progBar = document.querySelector('.sidebar-milestone-widget');
+  var progBar = document.querySelector('.list-browser-footer');
   hangPoint = progBar;
   hangPoint.appendChild(createHangPoint(progBar));
 } else {
-  totalDescription = "| " + totalDescription;
+  totalDescription =  totalDescription;
 }
 
 hangPoint.appendChild(createDisplay(totalDescription));
