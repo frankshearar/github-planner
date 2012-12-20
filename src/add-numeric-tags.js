@@ -20,7 +20,21 @@ function totalFilterItems() {
   return total;
 }
 
-function createHangPoint(rootElement) {
+function totalIssueItems() {
+  // Find all the data
+  var costs = document.getElementsByClassName('issues')[0].getElementsByClassName('label');
+  var total = 0;
+  for (var i = 0; i < costs.length; i++) {
+    var element = costs[i];
+    var cost = parseInt(element.getAttribute('data-name'));
+    if (!isNaN(cost)) {
+      total += cost
+    }
+  }
+  return total;
+}
+
+function createSummaryHangPoint(rootElement) {
   var fakeInfo = document.createElement('div');
   fakeInfo.className = 'info-secondary';
   progBar.appendChild(fakeInfo);
@@ -28,22 +42,38 @@ function createHangPoint(rootElement) {
   return fakeInfo;
 }
 
-function createDisplay(description) {
+function createSummaryDisplay(description) {
   var display = document.createElement('span');
-  display.innerHTML = totalDescription;
+  display.innerHTML = description;
   display.className = 'open';
   return display;
 }
 
-var hangPoint = document.querySelector('.info-secondary');
-var totalDescription = "Total estimate: " + totalFilterItems().toString();
-
-if (!hangPoint) {
-  var progBar = document.querySelector('.sidebar-milestone-widget');
-  hangPoint = progBar;
-  hangPoint.appendChild(createHangPoint(progBar));
-} else {
-  totalDescription = "| " + totalDescription;
+function createIssueDisplay(description) {
+  var display = document.createElement('span');
+  display.innerHTML = description;
+  display.className = 'footer-text';
+  return display;
 }
 
-hangPoint.appendChild(createDisplay(totalDescription));
+var summaryHangPoint = document.querySelector('.info-secondary');
+var issueHangPoint = document.querySelector('.list-browser-footer');
+var summaryTotalDescription = "Total estimate: " + totalFilterItems().toString();
+var issueTotalDescription = "Total estimate: " + totalIssueItems().toString();
+
+if (!summaryHangPoint) {
+  var progBar = document.querySelector('.sidebar-milestone-widget');
+  summaryHangPoint = progBar;
+  summaryHangPoint.appendChild(createSummaryHangPoint(progBar));
+} else {
+  summaryTotalDescription = "| " + summaryTotalDescription;
+}
+
+if (!issueHangPoint) {
+  var progBar = document.querySelector('.list-browser-footer');
+  issueHangPoint = progBar;
+  issueHangPoint.appendChild(createIssueHangPoint(progBar));
+}
+
+summaryHangPoint.appendChild(createSummaryDisplay(summaryTotalDescription));
+issueHangPoint.appendChild(createIssueDisplay(issueTotalDescription));
