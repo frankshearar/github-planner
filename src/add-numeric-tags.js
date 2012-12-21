@@ -26,7 +26,7 @@ function totalIssueItems() {
   var total = 0;
   for (var i = 0; i < costs.length; i++) {
     var element = costs[i];
-    var cost = parseInt(element.getAttribute('data-name'));
+    var cost = parseFloat(element.getAttribute('data-name'));
     if (!isNaN(cost)) {
       total += cost
     }
