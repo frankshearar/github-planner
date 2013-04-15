@@ -49,6 +49,14 @@ function createSummaryDisplay(description) {
   return display;
 }
 
+function createIssueHangPoint(rootElement) {
+  var fakeInfo = document.createElement('div');
+  fakeInfo.className = 'list-browser-footer';
+  progBar.appendChild(fakeInfo);
+  hangPoint = fakeInfo;
+  return fakeInfo;
+}
+
 function createIssueDisplay(description) {
   var display = document.createElement('span');
   display.innerHTML = description;
@@ -70,7 +78,7 @@ if (!summaryHangPoint) {
 }
 
 if (!issueHangPoint) {
-  var progBar = document.querySelector('.list-browser-footer');
+  var progBar = document.querySelector('.list-group');
   issueHangPoint = progBar;
   issueHangPoint.appendChild(createIssueHangPoint(progBar));
 }
