@@ -1,7 +1,7 @@
 {
   "name": "GitHub Planning Helper",
   "version": "1.0",
-  "manifest_version": 1,
+  "manifest_version": 2,
   "description": "Display the total estimate for your GitHub milestones.",
   "content_scripts": [
     {
