@@ -52,8 +52,6 @@ function createSummaryDisplay(description) {
 function createIssueHangPoint(rootElement) {
   var fakeInfo = document.createElement('div');
   fakeInfo.className = 'list-browser-footer';
-  progBar.appendChild(fakeInfo);
-  hangPoint = fakeInfo;
   return fakeInfo;
 }
 
@@ -78,9 +76,9 @@ if (!summaryHangPoint) {
 }
 
 if (!issueHangPoint) {
-  var progBar = document.querySelector('.list-group');
-  issueHangPoint = progBar;
-  issueHangPoint.appendChild(createIssueHangPoint(progBar));
+  var progBar = document.querySelector('.issue-list-group');
+  issueHangPoint = createIssueHangPoint(progBar)
+  progBar.appendChild(issueHangPoint);
 }
 
 summaryHangPoint.appendChild(createSummaryDisplay(summaryTotalDescription));
