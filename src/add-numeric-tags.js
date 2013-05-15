@@ -7,12 +7,15 @@ function totalFilterItems() {
     var scale = element.querySelector('.name');
     var count = element.querySelector('.count');
     if (scale && count) {
+      // The regex ensures that scale contains _only_ a number. In particular,
+      // this filter will reject Huboard style labels like "2 - Working".
+      isNumber = /^[0-9]+(\.[0-9]+)?$/.test(scale.innerHTML);
       scale = parseFloat(scale.innerHTML);
       count = parseInt(count.innerHTML);
       // Filter out any non-numeric labels.
       // Also, protect against with non-numeric counts (which shouldn't
       // happen, but...).
-      if (!isNaN(scale) && !isNaN(count)) {
+      if (isNumber && !isNaN(scale) && !isNaN(count)) {
         total += scale * count;
       }
     }
