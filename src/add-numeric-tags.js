@@ -28,9 +28,13 @@ function totalIssueItems() {
   var costs = document.getElementsByClassName('issues')[0].getElementsByClassName('label');
   var total = 0;
   for (var i = 0; i < costs.length; i++) {
+    // The regex ensures that scale contains _only_ a number. In particular,
+    // this filter will reject Huboard style labels like "2 - Working".
     var element = costs[i];
-    var cost = parseFloat(element.getAttribute('data-name'));
-    if (!isNaN(cost)) {
+    var label = element.getAttribute('data-name')
+    var cost = parseFloat(label);
+    isNumber = /^[0-9]+(\.[0-9]+)?$/.test(label);
+    if (isNumber && !isNaN(cost)) {
       total += cost
     }
   }
